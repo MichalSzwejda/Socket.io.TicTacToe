@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Pytania: czy 1 html ok, czy przy odswiezaniu start od poczatku strony -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Nickname Setting Section -->
+        <div id="nick-setting" class="centered-content">
+            <h1 class="text">ONLINE 3x3x3 TIC-TAC-TOE</h1>
+            <h3 class="text">Made by Michał Szwejda</h2>
+                <h2></h2>
+                <div class="input-container">
+                    <input id="nickname" class="input-box" placeholder="Enter your nickname" autocomplete="off" />
+                    <button id="set-nick">Set Nickname</button>
+                </div>
+                <p id="set-nick-error" class="hidden error">
+                    This name is already occupied by another player.
+                </p>
+                <p id="too-long-input" class="hidden error">This name is too long.</p>
+
+        </div>
+
+        <!-- Rooms Section -->
+        <div id="rooms" class="centered-content hidden">
+            <h2 class="text">Create your own room</h2>
+            <div class="input-container">
+                <input id="room-name" class="input-box" placeholder="Room Name" autocomplete="off" />
+                <button id="create-room">Create Room</button>
+            </div>
+            <p id="room-already-exists" class="hidden error">This room already exists.</p>
+            <p id="too-long-room-name" class="hidden error">This name is too long.</p>
+            <h2 class="text">Or join already existing one</h2>
+            <p id="no-rooms-available" class="hidden error"> There are no rooms available. Create your own one.
+            </p>
+            <div>
+                <div class="horizontally-centered">
+                    <ul id="room-list"></ul>
+                </div>
+                <button id="refresh">Refresh</button>
+            </div>
+        </div>
+
+
+        <!-- Game Section -->
+        <div id="game" class="hidden centered-content">
+            <h2 id="room-title"></h2>
+            <div id="players">
+                <div>
+                    <h3>Player 1:</h3>
+                    <h4 id="player1-name"></h4>
+                </div>
+                <div>
+                    <h3>Player 2:</h3>
+                    <h4 id="player2-name"></h4>
+                </div>
+            </div>
+            <div id="game-setup">
+                <p id="opponent-left" class="hidden error">Your opponent has left the room. Waiting for someone else...
+                </p>
+                <h1 id="winning-text" class="hidden">Congratulations! You Won!</h1>
+                <h1 id="loosing-text" class="hidden">Defeat! Better luck next time!</h1>
+                <button id="start-game" class="hidden">Start The Game</button>
+                <p id="waiting-for-opponent-start-button" class="hidden">Wait for your opponent to also press their
+                    'Start The Game' button</p>
+            </div>
+            <div id="gameplay" class="hidden">
+                <div id="board"></div>
+                <p id="your-turn" class="hidden">Your Turn! Click on a chosen tile to mark it.</p>
+                <p id="not-your-turn" class="hidden">Wait for your opponent to make a move.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
